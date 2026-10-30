@@ -1,0 +1,13 @@
+# Code owners are requested for review automatically on every pull request.
+# Later rules take precedence over earlier ones.
+#
+# Default owner (replace with the repository owner's GitHub username):
+* @<repo-owner>
+#
+# Assign each page owner to their page and its feature, for example:
+# /src/pages/Cart/      @<cart-owner>
+# /src/features/cart/   @<cart-owner>
+#
+# Shared layers stay with the team lead:
+# /src/app/      @<repo-owner>
+# /src/shared/   @<repo-owner>
