@@ -116,8 +116,32 @@ Only React component and page files (`.jsx`) use default exports. Slices, hooks,
 
 ## 8. Git workflow
 
-- **Branches:** `main` is always deployable. `develop` is the integration branch. Work happens on `feature/<scope>-<short-name>` branches created from `develop` (for example `feature/cart-summary`). Use `fix/...` for bug fixes.
-- **Pull requests** target `develop`, use the PR template, need **one approving review** and a green CI run, and are **squash merged**.
+- **Branches:**
+  - `main` is always deployable. Nobody pushes to it directly.
+  - `develop` collects every finished task. Nobody pushes to it directly.
+  - Each team member has one personal branch created from `develop`, where all their work happens:
+
+    | Member                         | Branch            |
+    | ------------------------------ | ----------------- |
+    | Salem Saleh                    | `dev/salem`       |
+    | Abdelrahman Hany Mohamed       | `dev/abdelrahman` |
+    | Fares Ahmed Mostafa Slim       | `dev/fares`       |
+    | Wassim Gomaa El-Sakka          | `dev/wassim`      |
+    | Zein El-Din Amr El-Sayed Ahmed | `dev/zein`        |
+    | Asmaa Nehad Farouk             | `dev/asmaa`       |
+
+- **Pull requests** go from your personal branch into `develop`, one task per PR. They use the PR template, need **one approving review** and a green CI run, and are **squash merged**.
+- **After your PR is merged**, reset your branch to the new `develop` before the next task, so old commits do not come back in your next PR:
+
+  ```bash
+  git switch dev/<name>
+  git fetch origin
+  git reset --hard origin/develop
+  git push --force-with-lease
+  ```
+
+  Only do this when everything on your branch has been merged. To pick up teammates' work in the middle of a task, run `git fetch origin` and `git merge origin/develop` instead.
+
 - **Commits** follow [Conventional Commits](https://www.conventionalcommits.org/): `type(scope): message`, for example `feat(cart): add quantity stepper`. Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`. commitlint rejects anything else.
 - **Releases:** `develop` is merged into `main` at the end of each milestone.
 

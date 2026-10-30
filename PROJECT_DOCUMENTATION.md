@@ -147,7 +147,7 @@ gantt
 
 ### Working rules (team constants)
 
-- **Branches:** `main` (always deployable), `develop` (integration), `feature/<name>` (one per task).
+- **Branches:** `main` (always deployable), `develop` (collects finished tasks), and one personal branch per member, `dev/<name>` (for example `dev/salem`). See `docs/ARCHITECTURE.md`, section 8.
 - **Pull requests:** every change goes through a PR with at least one review. No direct pushes to `main` or `develop`.
 - **Commits:** small and clear, in the form `feat: add product filters`, `fix: cart total rounding`.
 - **Definition of Done:** the feature works at all 3 screen sizes, handles loading, empty and error states, works in English and Arabic, has no console errors, and has been reviewed and merged.
